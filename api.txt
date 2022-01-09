@@ -1,0 +1,8 @@
+Client-ID: 5wa2hmsikneaigvge9sd30pg4xpx82
+Client Secret: dmde7unytix8xt9be4jjgm75rk0c2n
+
+{
+    "access_token": "2qguohonblygzksf6lw36l7s9qo1qc",
+    "expires_in": 5677893,
+    "token_type": "bearer"
+}
