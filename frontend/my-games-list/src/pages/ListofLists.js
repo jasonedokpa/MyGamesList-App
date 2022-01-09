@@ -1,18 +1,24 @@
 import './ListofLists.css'
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import importObject from "../../"
+import importObject from "../api/my-games-list-api"
 
 function ListsofLists(props)
 {
 	// states
-	const [gamesLists, setGamesLists] = useState([{id: 1, name: "blah"}, {id: 2, name: "donuts"}])
+	const [gamesLists, setGamesLists] = useState(0)
 
 	// effects
 	// useEffect("function")
 	useEffect(() => {
-		const getGamesList = async () => {
-		
+		const getGamesList = async () => 
+		{
+			const data = importObject.fetchAllGamesLists()
+			console.log("returned data", data)
+			if (data)
+			{
+				setGamesLists(data)
+			}
 		}
 
 		getGamesList()

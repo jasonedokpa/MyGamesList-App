@@ -20,14 +20,15 @@ const tryCatchFetch = async (url, init = null ) =>
 	}
 }
 
-const BASE_URL = "http://localhost:8000/api"
+const BASE_URL = "http://localhost:8000/api/"
 
 const fetchAllGamesLists = async () =>
 {
-	return await tryCatchFetch(url = BASE_URL + "/games-list/")
+	const url = BASE_URL + "games-list/"
+	return await tryCatchFetch(url)
 }
 
-export default exportObject =
+export default
 {
 	tryCatchFetch,
 	fetchAllGamesLists
