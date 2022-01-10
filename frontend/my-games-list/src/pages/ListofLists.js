@@ -1,28 +1,30 @@
 import './ListofLists.css'
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import importObject from "../api/my-games-list-api"
+import NavBarComponent from '../components/NavBar'
 
 function ListsofLists(props)
 {
 	// states
-	const [gamesLists, setGamesLists] = useState([0,1])
+	const [allGamesLists, setAllGamesLists] = useState([])
 
 	// effects
 	// useEffect("function")
 	useEffect(() => {
-		const getGamesList = async () => 
+		const getAllGamesLists = async () => 
 		{
 			const data = await importObject.fetchAllGamesLists()
 			if (data)
-				setGamesLists(data)
+				setAllGamesLists(data)
 		}
 
-		getGamesList()
+		getAllGamesLists()
 	}, [])
 
-	const renderGamesLists = () => {
-		let elems = gamesLists.map((gamesList, index) => {
+	const renderAllGamesLists = () => {
+		console.log(allGamesLists)
+		let elems = allGamesLists.map((gamesList, index) => {
 			return	(
 				<li key={index}>
 					<Link to ={`/games-list/${gamesList.id}`}>{gamesList.name}</Link>
@@ -33,10 +35,15 @@ function ListsofLists(props)
 	}
 
 	return	( 
-		<div className = "ListofLists">
-			<h2>Choose A List</h2>
-			{renderGamesLists()}
-		</div>
+		<Fragment>
+			<NavBarComponent></NavBarComponent>
+			<div className = "ListofLists">
+				<h2>Choose A List</h2>
+				<ul>
+					{renderAllGamesLists()}
+				</ul>
+			</div>
+		</Fragment>
 	)
 }
 

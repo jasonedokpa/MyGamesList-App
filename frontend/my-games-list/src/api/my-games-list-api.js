@@ -24,12 +24,33 @@ const BASE_URL = "http://localhost:8000/api/"
 
 const fetchAllGamesLists = async () =>
 {
-	const url = BASE_URL + "games-list/"
+	const url = BASE_URL + `games-list/`
+	return await tryCatchFetch(url)
+}
+
+const fetchGamesList = async (id) =>
+{
+	const url = BASE_URL + `games-list/${id}`
+	return await tryCatchFetch(url)
+}
+
+const fetchAllGames = async (id) =>
+{
+	const url = BASE_URL + `games/`
+	return await tryCatchFetch(url)
+}
+
+const fetchGame = async (id) =>
+{
+	const url = BASE_URL + `games/${id}/`
 	return await tryCatchFetch(url)
 }
 
 export default
 {
 	tryCatchFetch,
-	fetchAllGamesLists
+	fetchAllGamesLists,
+	fetchGamesList,
+	fetchAllGames,
+	fetchGame
 }

@@ -10,4 +10,3 @@ class GamesListViewSet(ModelViewSet):
 class GameViewSet(ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
- 

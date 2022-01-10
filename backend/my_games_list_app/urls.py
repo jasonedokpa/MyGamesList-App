@@ -6,6 +6,6 @@ from my_games_list_app.views import GamesListViewSet, GameViewSet
 r = DefaultRouter()
 
 r.register(r"games-list", GamesListViewSet, basename="games-list")
-r.register(r"game", GameViewSet, basename="game")
+r.register(r"games", GameViewSet, basename="game")
 
 urlpatterns = r.urls
