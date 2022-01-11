@@ -1,4 +1,4 @@
-const tryCatchFetch = async (url, init = null ) =>
+const tryCatchFetch = async ( url, init = null ) =>
 {
 	try
 	{

@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import importObject from "../api/my-games-list-api"
 import NavBarComponent from "../components/NavBar"
+import GameComponent from '../components/Game'
 
 function Home(props)
 {
@@ -11,7 +12,8 @@ function Home(props)
 
 	// effects
 	// useEffect("function")
-	useEffect(() => {
+	useEffect(() => 
+	{
 		const getAllGames = async () => 
 		{
 			const data = await importObject.fetchAllGames()
@@ -23,14 +25,8 @@ function Home(props)
 	}, [])
 
 	const renderAllGames = () => {
-		console.log(allGames)
 		let elems = allGames.map((game, index) => {
-			return	(
-				<li key={index}>
-					<div><img src={game.image_url}></img></div>
-					<div><Link to ={`/game/${game.id}`}>{game.title}</Link></div>
-				</li>
-			) 
+			return	<GameComponent id={game.id} title={game.title} image_url={game.image_url}/>
 		})
 		return elems
 	}
@@ -38,10 +34,8 @@ function Home(props)
 	return	(
 		<Fragment>
 			<NavBarComponent></NavBarComponent>
-			<div className = "ListofLists">
-				<ul>
-					{renderAllGames()}
-				</ul>
+			<div id="img-wrapper" className = "ListofLists">
+				{renderAllGames()}
 			</div>
 		</Fragment>
 	)

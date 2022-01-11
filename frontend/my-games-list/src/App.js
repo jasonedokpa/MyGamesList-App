@@ -2,9 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import GamesList from "./pages/GamesList"
-import Game from "./pages/Game"
+import Game from "./pages/GamePage"
 import ListsofLists from './pages/ListofLists';
 import Login from "./pages/Login"
+import Search from "./pages/Search"
 
 function App() 
 {
@@ -17,6 +18,7 @@ function App()
           <Route path = "/all-lists/" element={<ListsofLists />}></Route>
           <Route path = "/games-list/:listID" element={<GamesList />}></Route>
           <Route path = "/game/:gameID" element={<Game />}></Route>
+          <Route path = "/search" element={<Search />}></Route>
         </Routes>
       </Router>
     </div>

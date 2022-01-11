@@ -23,10 +23,9 @@ function ListsofLists(props)
 	}, [])
 
 	const renderAllGamesLists = () => {
-		console.log(allGamesLists)
 		let elems = allGamesLists.map((gamesList, index) => {
 			return	(
-				<li key={index}>
+				<li style={{ listStyleType: "none" }} key={index}>
 					<Link to ={`/games-list/${gamesList.id}`}>{gamesList.name}</Link>
 				</li>
 			) 

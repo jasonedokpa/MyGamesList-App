@@ -1,4 +1,4 @@
-import './Game.css'
+import './GamePage.css'
 import { Fragment, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import importObject from "../api/my-games-list-api"

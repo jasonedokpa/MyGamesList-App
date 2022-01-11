@@ -1,7 +1,7 @@
 import './NavBar.css'
 import { Container, Col, Row, Column, Button, Alert, Form, Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
-function NavBarComponent()
+function NavBarComponent(props)
 {
 	return (
 		<Navbar bg="light" expand="lg">
@@ -11,13 +11,12 @@ function NavBarComponent()
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
 						<Nav.Link href="/all-lists">Lists</Nav.Link>
-						<NavDropdown title="Dropdown" id="basic-nav-dropdown">
-							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+						<Nav.Link href="/search">Search</Nav.Link>
+						{ props.isList && <NavDropdown title="Manage List" id="basic-nav-dropdown">
+							<NavDropdown.Item href="#action/3.1">Add Game</NavDropdown.Item>
 							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-						</NavDropdown>
+							<NavDropdown.Item href="#action/3.2">Remove Game</NavDropdown.Item>
+						</NavDropdown> }
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
