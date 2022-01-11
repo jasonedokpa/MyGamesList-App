@@ -23,7 +23,6 @@ export default function Search()
 				console.log("cover data", coverData)
 				
 				cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + coverData[0].image_id + ".png")
-				console.log("data[0]", data[0])
 			}
 		
 		console.log("cover_urls", cover_urls)
