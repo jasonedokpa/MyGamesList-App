@@ -14,29 +14,25 @@ export default function Search()
 		const getGameData = async () =>
 		{	
 			const data = await importObject.fetchIGDBGames(query)
+			let cover_urls = []
+			for (var i = 0; i < 10; i++)
+			{
+			
+				let coverData = await importObject.fetchIGDBCovers(data[i].cover)
+		
+				console.log("cover data", coverData)
+				
+				cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + coverData[0].image_id + ".png")
+				console.log("data[0]", data[0])
+			}
+		
+		console.log("cover_urls", cover_urls)
+		setGameCover(cover_urls)
 			setSearchResults(data)
 		}
 			
 		getGameData()
 
-		let cover_urls = []
-
-		for (var i = 0; i < 10; i++)
-		{
-			const getGameCover = async() =>
-			{
-				let data = await importObject.fetchIGDBCovers(searchResults[i].cover)
-
-				console.log("image data", data)
-				
-				cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + data[0].image_id + ".png")
-			}
-			getGameCover()
-		}
-		
-		console.log("cover_urls", cover_urls)
-		setGameCover(cover_urls)
-	
 	}, [query]
 	)
 
