@@ -34,7 +34,7 @@ export default function Search()
 			getGameCover()
 		}
 		
-		console.log("ulala", cover_urls)
+		console.log("cover_urls", cover_urls)
 		setGameCover(cover_urls)
 	
 	}, [query]
