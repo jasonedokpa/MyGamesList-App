@@ -3,6 +3,7 @@ import axios from "axios"
 const fetchIGDBGames = ( search_term ) =>
 {
 	//api_url = https://api.igdb.com/v4/games
+	// lcp --proxyUrl https://api.igdb.com
 
 	return axios({
 		url: "http://localhost:8010/proxy/v4/games",

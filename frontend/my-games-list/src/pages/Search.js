@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import NavBarComponent from "../components/NavBar";
 import importObject from "../api/IGDB-api"
 import GameComponent from "../components/Game";
+import "./Search.css"
 
 export default function Search()
 {
@@ -41,12 +42,26 @@ export default function Search()
 		return elems
 	}
 
+	const handleOnSubmit = (inputTextEvent) =>
+	{
+		console.log(inputTextEvent)
+		inputTextEvent.preventDefault()
+		setQuery()
+	}
+
 	return (
-		<div>
+	
+
+		<div >
 			<NavBarComponent/>
-			<label><p>Game Title:</p></label>
-			<input type="text" onChange={e => setQuery(e.target.value)}></input>
-			<div>
+			<form onSubmit={handleOnSubmit}>
+				<label>
+					Enter Game:
+					<input type="text" name="name" />
+				</label>
+				<input type="submit" value="Search" />
+				</form>
+			<div id="img-wrapper">
 				{renderSearchResults()}
 			</div>
 		</div>
