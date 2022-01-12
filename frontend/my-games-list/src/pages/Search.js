@@ -17,7 +17,6 @@ export default function Search()
 			let cover_urls = []
 			for (var i = 0; i < 10; i++)
 			{
-			
 				let coverData = await importObject.fetchIGDBCovers(data[i].cover)
 		
 				console.log("cover data", coverData)
@@ -25,8 +24,8 @@ export default function Search()
 				cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + coverData[0].image_id + ".png")
 			}
 		
-		console.log("cover_urls", cover_urls)
-		setGameCover(cover_urls)
+			console.log("cover_urls", cover_urls)
+			setGameCover(cover_urls)
 			setSearchResults(data)
 		}
 			
@@ -37,7 +36,7 @@ export default function Search()
 
 	const renderSearchResults = () => {
 		let elems = searchResults.map((game, index) => {
-			return	<GameComponent key={index} id={game.id} title={game.name} image_url={ gameCover[index] } search={true}/>
+			return	<GameComponent url={game.url} key={index} id={game.id} title={game.name} image_url={ gameCover[index] } search={true}/>
 		})
 		return elems
 	}
@@ -45,7 +44,7 @@ export default function Search()
 	return (
 		<div>
 			<NavBarComponent/>
-			<label>Search</label>
+			<label><p>Game Title:</p></label>
 			<input type="text" onChange={e => setQuery(e.target.value)}></input>
 			<div>
 				{renderSearchResults()}
