@@ -33,6 +33,7 @@ function Home(props)
 
 	return	(
 		<Fragment>
+		
 			<NavBarComponent></NavBarComponent>
 			<div id="img-wrapper" className = "ListofLists">
 				{renderAllGames()}

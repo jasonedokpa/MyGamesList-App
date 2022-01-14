@@ -24,12 +24,19 @@ function Game(props)
 		getGame()
 	}, [])
 
+	const deleteCurrentGame = () =>
+	{
+		console.log("game id ", game_id)
+		importObject.deleteGame(game_id)
+	}
+
 	const renderGame = () => {
 		return (
 			<Fragment>
+				<button onClick={deleteCurrentGame}>Delete</button>
 				<img src={game.image_url} alt="game-cover" />
 				<p>{ game.title }</p>
-				<p>{ game.developer} </p>
+				{false && <p>{ game.developer} </p>}
 				<p>{ game.date_released} </p>
 				<p>Review Score: { game.review_score} </p>
 				<p>{ game.description} </p>

@@ -16,13 +16,19 @@ export default function Search()
 		{	
 			const data = await importObject.fetchIGDBGames(query)
 			let cover_urls = []
-			for (var i = 0; i < 10; i++)
+			console.log("cover data something",data)
+			for (var i = 0; i < data.length; i++)
 			{
 				let coverData = await importObject.fetchIGDBCovers(data[i].cover)
-		
-				console.log("cover data", coverData)
+				if (data[i].cover)
+				{
+					console.log("cover data", coverData)
 				
-				cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + coverData[0].image_id + ".png")
+					cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/" + coverData[0].image_id + ".png")
+				}
+				else
+					cover_urls.push("https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png")
+				
 			}
 		
 			console.log("cover_urls", cover_urls)
@@ -42,16 +48,14 @@ export default function Search()
 		return elems
 	}
 
-	const handleOnSubmit = (inputTextEvent) =>
+	const handleOnSubmit = (event) =>
 	{
-		console.log(inputTextEvent)
-		inputTextEvent.preventDefault()
-		setQuery()
+		console.log(event)
+		event.preventDefault()
+		setQuery(event.target[0].value)
 	}
 
 	return (
-	
-
 		<div >
 			<NavBarComponent/>
 			<form onSubmit={handleOnSubmit}>
