@@ -33,14 +33,12 @@ const postGame = (game_id, image_url) =>
 	{
 		const gameInformationObject = await importObject.fetchIGDBGame(game_id)
 
-		
+
 
 		gameDataParam.info = gameInformationObject[0]
 	
 		if (!gameDataParam.info.rating)
 			gameDataParam.info.rating = 0
-
-		console.log("game date", gameDataParam.info.first_release_date)
 
 		if (gameDataParam.info.first_release_date)
 			gameDataParam.info.first_release_date = dateConverted(gameDataParam.info.first_release_date)
@@ -54,6 +52,7 @@ const postGame = (game_id, image_url) =>
 
 		let exportObject = 
 		{
+			"user": localStorage.getItem("user_id"),
 			"title": gameDataReference.info.name,
 			"description": gameDataReference.info.summary,
 			"platforms": "Nintendo 64",

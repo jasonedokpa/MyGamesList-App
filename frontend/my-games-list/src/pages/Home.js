@@ -26,14 +26,13 @@ function Home(props)
 
 	const renderAllGames = () => {
 		let elems = allGames.map((game, index) => {
-			return	<GameComponent id={game.id} title={game.title} image_url={game.image_url}/>
+			return	<GameComponent key={index} id={game.id} title={game.title} image_url={game.image_url}/>
 		})
 		return elems
 	}
 
 	return	(
 		<Fragment>
-		
 			<NavBarComponent></NavBarComponent>
 			<div id="img-wrapper" className = "ListofLists">
 				{renderAllGames()}

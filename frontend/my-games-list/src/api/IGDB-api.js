@@ -1,60 +1,64 @@
 import axios from "axios"
+const BASE_URL = "http://localhost:8010/proxy/v4/"
 
-const fetchIGDBGames = ( search_term ) =>
+//api_url = https://api.igdb.com/v4/games
+// lcp --proxyUrl https://api.igdb.com
+
+const checkExpiration = (error) =>
 {
-	//api_url = https://api.igdb.com/v4/games
-	// lcp --proxyUrl https://api.igdb.com
+	if (error.response.status === 401)
+	{
+		window.location.replace("http://localhost:3000/login")
+		alert("We have safely logged you out!")	
+	}
+}
 
+const fetchIGDBGames = (search_term) =>
+{
 	return axios({
-		url: "http://localhost:8010/proxy/v4/games",
+		url: BASE_URL + "games",
 		method: 'POST',
-		headers: {
+		headers: 
+		{
 			'Accept': 'application/json',
 			'Client-ID': '5wa2hmsikneaigvge9sd30pg4xpx82',
 			'Authorization': 'Bearer dliikjkxi90xdnlc4tvfiy2zzwurn8'
 		},
 		data: `fields *; search "` + search_term + `";`
-	  })
-		.then(response => {
+	}).then(response => {
 			//console.log(response.data);
 			return response.data
-		})
-		.catch(err => {
-			//console.error(err);
+		}).catch(err => {
+			console.error(err);
 			return err
-		})
+			})
 }
 
 const fetchIGDBGame = ( game_id ) =>
 {
-	//api_url = https://api.igdb.com/v4/games
-
 	return axios({
-		url: "http://localhost:8010/proxy/v4/games",
+		url: BASE_URL + "games",
 		method: 'POST',
-		headers: {
+		headers: 
+		{
 			'Accept': 'application/json',
 			'Client-ID': '5wa2hmsikneaigvge9sd30pg4xpx82',
 			'Authorization': 'Bearer dliikjkxi90xdnlc4tvfiy2zzwurn8'
 		},
 		data: `fields *; where id = ` + game_id + `;`
-	  })
-		.then(response => {
-			//console.log(response.data);
+	}).then(response => {
+			//console.log(response.data)
 			return response.data
-		})
-		.catch(err => {
+		}).catch(err => {
 			console.error(err);
 			return err
-		})
+			})
 }
 
 const fetchIGDBCovers = ( cover_id ) =>
 {
-	//api_url = https://api.igdb.com/v4/covers
-
 	return axios({
-		url: "http://localhost:8010/proxy/v4/covers",
+		url: BASE_URL + "covers",
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -62,69 +66,55 @@ const fetchIGDBCovers = ( cover_id ) =>
 			'Authorization': 'Bearer dliikjkxi90xdnlc4tvfiy2zzwurn8'
 		},
 		data: `fields *; where id = ` + cover_id + `;`
-	  })
-		.then(response => {
-			//console.log("response", response.data);
+	}).then(response => {
+			//console.log(response.data)
 			return response.data
-		})
-		.catch(err => {
-			//console.error(err);
+		}).catch(err => {
+			console.error(err);
 			return err
-		})
+			})
 }
 
-const fetchIGDBCompany = ( company_id ) =>
+const fetchIGDBCompany = (company_id) =>
 {
-	//api_url = https://api.igdb.com/v4/companies
-
 	return axios({
-		url: "http://localhost:8010/proxy/v4/involved_companies",
+		url: BASE_URL + "involved_companies",
 		method: 'POST',
-		headers: {
+		headers: 
+		{
 			'Accept': 'application/json',
 			'Client-ID': '5wa2hmsikneaigvge9sd30pg4xpx82',
 			'Authorization': 'Bearer dliikjkxi90xdnlc4tvfiy2zzwurn8'
 		},
 		data: `fields *; where id = ` + company_id + `;`
-	  })
-		.then(response => {
-			//console.log("response", response.data);
+	}).then(response => {
+			//console.log(response.data);
 			return response.data
-		})
-		.catch(err => {
-			//console.error(err);
+		}).catch(err => {
+			console.error(err);
 			return err
-		})
+			})
 }
 
 const postDataBaseGame = (dataFields) =>
 {
-	var data = JSON.stringify(dataFields)
-	
-
-	var config = 
-	{
+	axios({
 		method: 'POST',
 		url: 'http://localhost:8000/api/games/',
 		headers: 
 		{ 
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			"Authorization": "JWT " + localStorage.getItem("token")
 		},
-		data : data
-	};
-
-	axios(config)
-	.then(function (response) {
-	console.log(JSON.stringify(response.data));
-	})
-	.catch(function (error) {
-	console.log(error);
-	});
+		data : JSON.stringify(dataFields)
+	}).then(response => {
+			//console.log(response.data);
+		}).catch(error => {
+			console.log(error);
+			checkExpiration(error)
+			});
 
 }
-
-
-
 
 export default
 {
@@ -134,5 +124,3 @@ export default
 	fetchIGDBCompany,
 	postDataBaseGame,
 }
-
-console.log()
