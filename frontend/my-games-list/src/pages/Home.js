@@ -25,10 +25,9 @@ function Home(props)
 	}, [])
 
 	const renderAllGames = () => {
-		let elems = allGames.map((game, index) => {
+		return allGames.map((game, index) => {
 			return	<GameComponent key={index} id={game.id} title={game.title} image_url={game.image_url}/>
 		})
-		return elems
 	}
 
 	return	(

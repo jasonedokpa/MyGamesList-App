@@ -1,5 +1,5 @@
 import axios from "axios"
-const BASE_URL = "http://localhost:8010/proxy/v4/"
+const BASE_URL = "http://localhost:8010/proxy/"
 
 //api_url = https://api.igdb.com/v4/games
 // lcp --proxyUrl https://api.igdb.com
@@ -16,7 +16,7 @@ const checkExpiration = (error) =>
 const fetchIGDBGames = (search_term) =>
 {
 	return axios({
-		url: BASE_URL + "games",
+		url: BASE_URL + "v4/games",
 		method: 'POST',
 		headers: 
 		{
@@ -37,7 +37,7 @@ const fetchIGDBGames = (search_term) =>
 const fetchIGDBGame = ( game_id ) =>
 {
 	return axios({
-		url: BASE_URL + "games",
+		url: BASE_URL + "v4/games",
 		method: 'POST',
 		headers: 
 		{
@@ -58,7 +58,7 @@ const fetchIGDBGame = ( game_id ) =>
 const fetchIGDBCovers = ( cover_id ) =>
 {
 	return axios({
-		url: BASE_URL + "covers",
+		url: BASE_URL + "v4/covers",
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -78,7 +78,7 @@ const fetchIGDBCovers = ( cover_id ) =>
 const fetchIGDBCompany = (company_id) =>
 {
 	return axios({
-		url: BASE_URL + "involved_companies",
+		url: BASE_URL + "v4/involved_companies",
 		method: 'POST',
 		headers: 
 		{

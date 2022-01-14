@@ -33,7 +33,9 @@ function Game(props)
 	const renderGame = () => {
 		return (
 			<Fragment>
-				<button onClick={deleteCurrentGame}>Delete</button>
+				<nav>
+					<button onClick={deleteCurrentGame}>Delete Game</button>
+				</nav>
 				<img src={game.image_url} alt="game-cover" />
 				<p>{ game.title }</p>
 				{false && <p>{ game.developer} </p>}
