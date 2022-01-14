@@ -29,7 +29,7 @@ const fetchGame = (id) =>
   			})
 }
 
-const fetchAllGames = (id) =>
+const fetchAllGames = () =>
 {	
 	return axios.request({
 		url: BASE_URL + "games/",

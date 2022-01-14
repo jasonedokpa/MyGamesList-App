@@ -6,6 +6,7 @@ import Game from "./pages/GamePage"
 import ListsofLists from './pages/ListofLists';
 import Login from "./pages/Login"
 import Search from "./pages/Search"
+import EpicGames from './pages/EpicGames';
 
 function App() 
 {
@@ -16,6 +17,7 @@ function App()
           <Route path = "/" element={<Home />}></Route>
           <Route path = "/login" element={<Login />}></Route>
           <Route path = "/all-lists/" element={<ListsofLists />}></Route>
+          <Route path = "/epic-games/" element={<EpicGames />}></Route>
           <Route path = "/games-list/:listID" element={<GamesList />}></Route>
           <Route path = "/game/:gameID" element={<Game />}></Route>
           <Route path = "/search" element={<Search />}></Route>

@@ -11,8 +11,11 @@ class GamesListViewSet(ModelViewSet):
         return GamesList.objects.filter(user=self.request.user)
 
 class GameViewSet(ModelViewSet):
-    queryset = Game.objects.all()
+    # queryset = Game.objects.all()
     serializer_class = GameSerializer
+
+    def get_queryset(self):
+        return Game.objects.filter(user=self.request.user)
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()

@@ -3,6 +3,13 @@ import { Container, Col, Row, Column, Button, Alert, Form, Navbar, Nav, NavDropd
 
 function NavBarComponent(props)
 {
+	function signOut()
+	{
+		localStorage.setItem("token", "")
+		localStorage.setItem("user_id", "")
+		window.location.replace("http://localhost:3000/login")
+	}
+
 	return (
 		<Navbar bg="light" expand="lg">
 			<Container>
@@ -12,6 +19,8 @@ function NavBarComponent(props)
 					<Nav className="me-auto">
 						<Nav.Link href="/all-lists">Lists</Nav.Link>
 						<Nav.Link href="/search">Search</Nav.Link>
+						<Nav.Link href="/epic-games">Free Epic Games</Nav.Link>
+						<Nav.Link onClick={signOut}>Logout</Nav.Link>
 						{ props.isList && <NavDropdown title="Manage List" id="basic-nav-dropdown">
 							<NavDropdown.Item href="#action/3.1">Add Game</NavDropdown.Item>
 							<NavDropdown.Divider />

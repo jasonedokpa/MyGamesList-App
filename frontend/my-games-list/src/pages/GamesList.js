@@ -8,13 +8,7 @@ import GameComponent from '../components/Game'
 function GamesList(props)
 {
 	const games_list_id = useParams().listID
-	
-	// states
 	const [gamesList, setGamesList] = useState([])
-
-	// effects
-	// useEffect("function")
-	//useEffect()
 
 	useEffect(() => 
 	{
@@ -23,15 +17,12 @@ function GamesList(props)
 		{
 			const data = await importObject.fetchGamesList(games_list_id)
 
-			
-			
 			if (data)
 				{
-				console.log("truest", data)
-				setGamesList(data)
-				console.log("fetafla", gamesList)
+					console.log("truest", data)
+					setGamesList(data)
+					console.log("fetafla", gamesList)
 				}
-			
 		}
 		getGamesLists()
 	}, [])

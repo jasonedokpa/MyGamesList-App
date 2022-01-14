@@ -19,7 +19,6 @@ class GamesListSerializer(ModelSerializer):
         return super().to_representation(instance)
 
 class UserSerializer(ModelSerializer):
-
     class Meta:
         model = User
         fields = ['username', "id"]
