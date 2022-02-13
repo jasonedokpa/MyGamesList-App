@@ -30,7 +30,6 @@ const fetchIGDBGames = (search_term) =>
 			return response.data
 		}).catch(err => {
 			console.error(err);
-			return err
 			})
 }
 
@@ -47,11 +46,9 @@ const fetchIGDBGame = ( game_id ) =>
 		},
 		data: `fields *; where id = ` + game_id + `;`
 	}).then(response => {
-			//console.log(response.data)
 			return response.data
 		}).catch(err => {
 			console.error(err);
-			return err
 			})
 }
 
@@ -67,7 +64,6 @@ const fetchIGDBCovers = ( cover_id ) =>
 		},
 		data: `fields *; where id = ` + cover_id + `;`
 	}).then(response => {
-			//console.log(response.data)
 			return response.data
 		}).catch(err => {
 			console.error(err);
@@ -88,7 +84,6 @@ const fetchIGDBCompany = (company_id) =>
 		},
 		data: `fields *; where id = ` + company_id + `;`
 	}).then(response => {
-			//console.log(response.data);
 			return response.data
 		}).catch(err => {
 			console.error(err);
@@ -108,7 +103,6 @@ const postDataBaseGame = (dataFields) =>
 		},
 		data : JSON.stringify(dataFields)
 	}).then(response => {
-			//console.log(response.data);
 		}).catch(error => {
 			console.log(error);
 			checkExpiration(error)

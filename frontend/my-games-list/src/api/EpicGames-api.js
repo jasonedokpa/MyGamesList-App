@@ -18,7 +18,6 @@ const fetchFreeEpicGames = () =>
 			return response.data
 		}).catch(err => {
 			console.error(err);
-			return err
 			})
 }
 

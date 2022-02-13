@@ -21,7 +21,6 @@ const fetchGame = (id) =>
 			"Authorization": "JWT " + localStorage.getItem("token")
 		},
 	}).then(response => {
-		//console.log(response.data)
 		return response.data
 		}).catch((err) => {
 			console.error(err)
@@ -40,7 +39,6 @@ const fetchAllGames = () =>
 			"Authorization": "JWT " + localStorage.getItem("token")
 		},
 	}).then(response => {
-		//console.log(response.data)
 		return response.data
 		}).catch((err) => {
 			console.error(err)
@@ -59,7 +57,6 @@ const fetchGamesList = (id) =>
 			"Authorization": "JWT " + localStorage.getItem("token")
 		},
 	}).then(response => {
-			//console.log(response.data)
 			return response.data
 		}).catch((err) => {
 				console.error(err)
@@ -78,7 +75,6 @@ const fetchAllGamesLists = () =>
 			"Authorization": "JWT " + localStorage.getItem("token")
 		},
 	}).then(response => {
-			//console.log(response.data)
 			return response.data
 		}).catch((err) => {
 				console.error(err)
@@ -97,7 +93,6 @@ const deleteGame = (game_id) =>
 		},
 	}).then(response =>
 		{
-			//console.log(response.data)
 			window.location.replace("http://localhost:3000/")
 		}).catch((err) => 
 			{
@@ -121,7 +116,6 @@ const getCredentials = (username, password) =>
 		  "password": password
 		}
 	}).then(response => {
-		//console.log(response.data)
 		return response.data
 		}).catch(function (err) {
 			console.error(err);
